@@ -5,8 +5,10 @@
 ```
 .
 ├─ node_modules/
+├─ .gitignore
 ├─ index.html
 ├─ main.js
+├─ gulpfile.js
 ├─ package.json
 └─ README.md
 ```
@@ -17,4 +19,10 @@
 
 ```
 $ npm run exec
+```
+
+以下のコマンドでパッケージ化。
+
+```
+$ gulp package:win32
 ```
