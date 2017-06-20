@@ -1,7 +1,20 @@
-# Electron
+# 基本形
 
-## 基本形
+## 構成
 
-## gulp 連携
+```
+.
+├─ src
+│    ├─ index.html
+│    └─ main.js
+├─ package.json
+└─ README.md
+```
 
-## gulp + webpack 連携
+## 使い方
+
+以下のコマンドで実行。
+
+```
+$ electron src/
+```
