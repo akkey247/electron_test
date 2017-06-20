@@ -4,9 +4,9 @@
 
 ```
 .
-├─ src
-│    ├─ index.html
-│    └─ main.js
+├─ node_modules/
+├─ index.html
+├─ main.js
 ├─ package.json
 └─ README.md
 ```
@@ -16,5 +16,5 @@
 以下のコマンドで実行。
 
 ```
-$ electron src/
+$ npm run exec
 ```
