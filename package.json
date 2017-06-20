@@ -10,6 +10,6 @@
     "exec": "node_modules/.bin/electron ."
   },
   "devDependencies": {
-    "electron": "^1.6.11"
+    "electron-prebuilt": "^1.4.13"
   }
 }
