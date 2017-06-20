@@ -5,10 +5,13 @@
 ```
 .
 ├─ node_modules/
+├─ src/
+│  ├─ index.html
+│  └─ script.js
 ├─ .gitignore
-├─ index.html
 ├─ main.js
 ├─ gulpfile.js
+├─ webpack.config.js
 ├─ package.json
 └─ README.md
 ```
@@ -19,6 +22,12 @@
 
 ```
 $ npm run exec
+```
+
+以下のコマンドでビルド。
+
+```
+$ gulp build
 ```
 
 以下のコマンドでパッケージ化。
