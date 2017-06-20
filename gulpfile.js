@@ -1,7 +1,27 @@
 'use strict';
 
 var gulp = require('gulp');
+var webpack = require('gulp-webpack');
+var webpackConfig = require('./webpack.config.js');
 var packager = require('electron-packager');
+
+// webpackで結合(ビルド)
+gulp.task('build', ['copy'], function(){
+  gulp.src('src/script.js')
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest('build/'));
+});
+
+// webpackで結合(ビルド)
+gulp.task('copy', function(){
+  gulp.src('src/*')
+    .pipe(gulp.dest('build/'));
+});
+
+// 自動ビルド
+gulp.task('default', function () {
+    gulp.watch('src/', ['build']);
+});
 
 // パッケージ作成(Windows)
 gulp.task('package:win32', function (done) {

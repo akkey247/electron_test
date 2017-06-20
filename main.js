@@ -23,7 +23,7 @@ app.on('window-all-closed', function() {
 app.on('ready', function() {
   // メイン画面の表示。ウィンドウの幅、高さを指定できる
   mainWindow = new BrowserWindow({width: 800, height: 600});
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/build/index.html');
 
   // ChromiumのDevツールを開く
   mainWindow.webContents.openDevTools();

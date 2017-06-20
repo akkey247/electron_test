@@ -11,6 +11,10 @@
   },
   "devDependencies": {
     "electron-packager": "^8.7.1",
-    "electron-prebuilt": "^1.4.13"
+    "electron-prebuilt": "^1.4.13",
+    "gulp-webpack": "^1.5.0"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
   }
 }
