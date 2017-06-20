@@ -10,6 +10,7 @@
     "exec": "node_modules/.bin/electron ."
   },
   "devDependencies": {
+    "electron-packager": "^8.7.1",
     "electron-prebuilt": "^1.4.13"
   }
 }
