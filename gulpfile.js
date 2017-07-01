@@ -8,10 +8,10 @@ var packager = require('electron-packager');
 
 // webpackで結合(ビルド)
 gulp.task('build', ['copy'], function () {
-  gulp.src('src/js/filecontroll.js')
+  gulp.src(['src/main/index.js', 'src/js/filecontroll.js'])
     .pipe(named())
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest('app/'));
 });
 
 // webpackで結合(ビルド)
@@ -20,7 +20,7 @@ gulp.task('copy', function () {
     ['src/*.html', 'src/css/**'],
     { base: 'src' }
   )
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest('app/'));
 });
 
 // 自動ビルド
