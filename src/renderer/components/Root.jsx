@@ -18,7 +18,7 @@ export default class Root extends React.Component {
     this.setState({
       count: this.state.count + 1
     });
-    ipcRenderer.send('message', {"count":this.state.count,"message":"test"});
+    ipcRenderer.send('message', {"url":"http://kujirahand.com/","savepath":"C:/Users/akkey/Desktop/test.html"});
   }
 
   /* 画面を生成 */
