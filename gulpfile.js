@@ -12,9 +12,9 @@ gulp.task('package:win32', function (done) {
     arch: 'x64',               // CPU種別. x64 or ia32
     platform: 'win32',         // OS種別. darwin or win32 or linux
     electronVersion: '1.6.11', // Electronのversion
-    overwrite: true,           // 上書き
+    overwrite: true            // 上書き
     // 無視ファイル
-    ignore: "/src",
+    //ignore: ".gitignore|gulpfile.js|package.json|webpack.config.js|README.md|/src"
   }, function (err, path) {
     // 追加でパッケージに手を加えたければ, path配下を適宜いじる
     done();
