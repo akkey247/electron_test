@@ -1,32 +1,37 @@
 import React from 'react';
 import {ipcRenderer} from 'electron';
+import SelectDirectory from './SelectDirectory.jsx';
+import InputText from './InputText.jsx';
 
 export default class Root extends React.Component {
   constructor(props) {
     super(props);
-    // stateの初期化
-    this.state = {count: 0}
-    //バインド
+
+    // バインド
     this.sendPing = this.sendPing.bind(this);
 
+    // レスポンス受け取り
     ipcRenderer.on('reply', (event, arg) => {
-      console.log(arg);
+      alert(arg);
     });
   }
 
   sendPing() {
-    this.setState({
-      count: this.state.count + 1
-    });
-    ipcRenderer.send('message', {"url":"http://kujirahand.com/","savepath":"C:/Users/akkey/Desktop/test.html"});
+    const json = {
+      "url": document.getElementById('url').value,
+      "savepath": document.getElementById('dirName').value + '/test.html'
+    }
+    console.log(json);
+    ipcRenderer.send('message', json);
   }
 
-  /* 画面を生成 */
+  // 画面を生成
   render() {
     return <div>
-      Send Count:
+      <SelectDirectory itemName='出力ディレクトリ' itemId='dirName' />
+      <InputText itemName='URL' itemId='url' />
       <button onClick={this.sendPing}>
-        {this.state.count}
+        送信
       </button>
     </div>;
   }
