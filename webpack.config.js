@@ -11,7 +11,7 @@ module.exports = [
       filename: 'index.js'
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.jsx?$/,
           loader: "babel-loader",
@@ -25,32 +25,48 @@ module.exports = [
     target: "electron"
   },
   {
+    entry: './src/renderer/index.html',
+    output: {
+      path: path.join(__dirname, 'app/renderer'),
+      filename: '[name].html'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.html$/,
+          loader: "file-loader?name=[name].[ext]"
+        },
+      ]
+    },
+  },
+  {
     entry: {
-      index: './src/renderer/index.html',
       style: './src/renderer/sass/main.scss'
     },
     output: {
-      path: path.join(__dirname, 'app/renderer'),
-      filename: 'index.js'
+      path: path.join(__dirname, 'app/renderer/css'),
+      filename: '[name].css'
     },
     module: {
-      loaders: [
-        {
-          test: /\.html$/,
-          loader: "file?name=[name].[ext]"
-        },
+      rules: [
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+          loader: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: "css-loader"
+          })
         },
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+          loader: ExtractTextPlugin.extract({
+            fallback: "style-loader",
+            use: ["css-loader", "sass-loader"]
+          })
         }
       ]
     },
     plugins: [
-      new ExtractTextPlugin("css/[name].css")
+      new ExtractTextPlugin("[name].css")
     ]
   },
   {
@@ -62,7 +78,7 @@ module.exports = [
       filename: 'index.js'
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.jsx?$/,
           loader: "babel-loader",
