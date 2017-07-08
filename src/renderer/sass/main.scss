@@ -1,3 +1,80 @@
+@charset "UTF-8";
+
+@import "cssreset-min.scss";
+
+@import "compass";
+
 body {
-  background-color: red;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
 }
+
+@mixin select-directory-box {
+  .select-directory-box {
+    margin: 0 0 10px 0;
+
+    span,
+    input,
+    button {
+      display: inline-block;
+    }
+
+    span {
+      height: 30px;
+      margin: 0 5px 0 0;
+      color: 1px solid #333;
+    }
+
+    input {
+      height: 30px;
+      width: 200px;
+      margin: 0 5px 0 0;
+      border: 1px solid #333;
+      @include border-radius(3px);
+      font-size: 1.2em;
+    }
+
+    button {
+      line-height: 30px;
+      width: 100px;
+      border: none;
+      @include border-radius(3px);
+      padding: 0;
+      background-color: #248;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #359;
+    }
+  }
+}
+
+@mixin input-text-box {
+  .input-text-box {
+    margin: 0 0 10px 0;
+
+    span,
+    input,
+    button {
+      display: inline-block;
+    }
+
+    span {
+      height: 30px;
+      margin: 0 5px 0 0;
+    }
+
+    input {
+      height: 30px;
+      width: 200px;
+      border: 1px solid #333;
+      @include border-radius(3px);
+      font-size: 1.2em;
+    }
+  }
+}
+
+@include select-directory-box;
+@include input-text-box;

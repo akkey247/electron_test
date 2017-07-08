@@ -7,8 +7,8 @@ export default class SelectDirectory extends React.Component {
   }
 
   render() {
-    return <div>
-      {this.props.itemName}:
+    return <div className="input-text-box">
+      <span>{this.props.itemName}:</span>
       <input type="text" id={this.props.itemId} />
     </div>;
   }

@@ -28,8 +28,8 @@ export default class SelectDirectory extends React.Component {
   }
 
   render() {
-    return <div>
-      {this.props.itemName}:
+    return <div className="select-directory-box">
+      <span>{this.props.itemName}:</span>
       <input type="text" id={this.props.itemId} value={this.state.directoryName} />
       <button onClick={this.selectDirectory}>
         選択

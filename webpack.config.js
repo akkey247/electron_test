@@ -51,7 +51,17 @@ module.exports = [
           test: /\.scss$/,
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
-            use: ["css-loader", "sass-loader"]
+            use: [
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  includePaths: ['node_modules/compass-mixins/lib']
+                },
+              }
+            ]
           })
         }
       ]
