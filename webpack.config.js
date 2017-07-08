@@ -1,43 +1,34 @@
-const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = [
   {
     entry: {
-      main: './src/main/index.js',
+      index: './src/main/index.js',
     },
     output: {
       path: path.join(__dirname, 'app/main'),
-      filename: 'index.js'
+      filename: '[name].js'
     },
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
-          loader: "babel-loader",
-          exclude: /node_modules/,
-          query: {
-            presets: ['es2015', 'react']
-          }
+          test: /\.js$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  ['es2015', {module: false}]
+                ]
+              }
+            }
+          ]
         }
       ]
     },
     target: "electron"
-  },
-  {
-    entry: './src/renderer/index.html',
-    output: {
-      path: path.join(__dirname, 'app/renderer'),
-      filename: '[name].html'
-    },
-    module: {
-      rules: [
-        {
-          test: /\.html$/,
-          loader: "file-loader?name=[name].[ext]"
-        },
-      ]
-    },
   },
   {
     entry: {
@@ -51,14 +42,14 @@ module.exports = [
       rules: [
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract({
+          use: ExtractTextPlugin.extract({
             fallback: "style-loader",
             use: "css-loader"
           })
         },
         {
           test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
+          use: ExtractTextPlugin.extract({
             fallback: "style-loader",
             use: ["css-loader", "sass-loader"]
           })
@@ -80,15 +71,28 @@ module.exports = [
     module: {
       rules: [
         {
-          test: /\.jsx?$/,
-          loader: "babel-loader",
-          exclude: /node_modules/,
-          query: {
-            presets: ['es2015', 'react']
-          }
+          test: /\.jsx$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  ['es2015', {modules: false}],
+                  'react'
+                ]
+              }
+            }
+          ]
         }
       ]
     },
-    target: "atom"
+    target: "atom",
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'src/renderer/index.html'),
+        filename: 'index.html',
+        inject: 'body'
+      })
+    ]
   }
 ];
